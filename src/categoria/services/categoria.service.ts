@@ -13,22 +13,22 @@ export class CategoriaService{
 
     async findAll(): Promise<Categoria[]>{
         return this.categoriaRepository.find({
-            //relations: {
-            //    produto: true
-            //}
-        }); //SELECT*FROM ;
+            relations: {
+               produto: true
+            }
+        }); 
     }
 
     async findById(id:number): Promise<Categoria>{
         
-        //SELECT*FROM tb_tema WHERE id = ?;
+        
         const categoria = await this.categoriaRepository.findOne({
             where: {
                 id
             },
-            //relations: {
-            //    produto: true
-            //}
+            relations: {
+                produto: true
+            }
         })
 
         if(!categoria)
@@ -42,9 +42,9 @@ export class CategoriaService{
             where: {
                 descricao: ILike(`%${descricao}%`)
             },
-            //relations: {
-            //    produto: true
-            //}
+            relations: {
+                produto: true
+            }
         }); 
     }
 
